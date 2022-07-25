@@ -4,12 +4,15 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Agent_AI : Agent
 {
     public Rigidbody rgBody;
     public float force;
- 
+    public float forceh;
+    public float force3x;
+
 
     public GameObject win;
     public GameObject obsParent;
@@ -18,14 +21,22 @@ public class Agent_AI : Agent
     public Quaternion myInrot;
     public Vector3 myInPos;
 
+    public Text wintxt;
+    int winVal = 0;
+    public Text losetxt;
+    int looseVal = 1;
+
     //para eu mexer
     public void Start()
     {
       
          obs = obsParent.GetComponentsInChildren<Transform>();
-         myInrot = this.transform.rotation;
-        myInPos = this.transform.position;
-
+         myInrot = this.transform.localRotation;
+        myInPos = this.transform.localPosition ;
+        forceh = force / 2;
+        force3x = force * 3;
+        wintxt.text = winVal.ToString();
+        losetxt.text = looseVal.ToString();
 
     }
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -42,14 +53,14 @@ public class Agent_AI : Agent
     {
         
         // base.OnActionReceived(actions);
-        float z = actions.ContinuousActions[0]* force;
+        float z = actions.ContinuousActions[0] * force3x;
    
-        float x = actions.ContinuousActions[1] * force;
+        float x = actions.ContinuousActions[1] * forceh;
 
 
 
         
-          this.rgBody.AddForce(new Vector3(x, 0, 0), ForceMode.Acceleration);
+          this.rgBody.AddForce(new Vector3(x, 0, 0), ForceMode.Impulse);
         
        
         
@@ -59,8 +70,11 @@ public class Agent_AI : Agent
 
     public override void OnEpisodeBegin()
     {
-        this.transform.position = myInPos;
-        this.transform.rotation = myInrot;
+        this.transform.localPosition  = myInPos;
+        this.transform.localRotation = myInrot;
+
+        wintxt.text = winVal.ToString();
+        losetxt.text = looseVal.ToString();
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -69,9 +83,9 @@ public class Agent_AI : Agent
      
 
         // Vector from agent to goal
-        Vector3 toWin= new Vector3((win.transform.position.x - this.transform.position.x),
-        (win.transform.position.y - this.transform.position.y),
-        (win.transform.position.z - this.transform.position.z));
+        Vector3 toWin= new Vector3((win.transform.localPosition .x - this.transform.localPosition .x),
+        (win.transform.localPosition .y - this.transform.localPosition .y),
+        (win.transform.localPosition .z - this.transform.localPosition .z));
 
 
         //vectorAgent to goal (3)
@@ -84,9 +98,9 @@ public class Agent_AI : Agent
         //obestacles
         foreach (Transform o in obs) //7 * 16
         {
-            Vector3 toO = new Vector3((o.position.x - this.transform.position.x),
-            (o.position.y - this.transform.position.y),
-            (o.position.z - this.transform.position.z));
+            Vector3 toO = new Vector3((o.localPosition .x - this.transform.localPosition .x),
+            (o.localPosition .y - this.transform.localPosition .y),
+            (o.localPosition .z - this.transform.localPosition .z));
 
 
             //vectorAgent to goal
@@ -96,9 +110,9 @@ public class Agent_AI : Agent
             sensor.AddObservation(toO.magnitude);//1
 
             //Rotarion
-            sensor.AddObservation(o.rotation.x);//1
-            sensor.AddObservation(o.rotation.y);//1
-            sensor.AddObservation(o.rotation.z);//1
+            sensor.AddObservation(o.localRotation.x);//1
+            sensor.AddObservation(o.localRotation.y);//1
+            sensor.AddObservation(o.localRotation.z);//1
         }
 
 
@@ -113,16 +127,31 @@ public class Agent_AI : Agent
     {
         if(collision.gameObject.tag == "dead")
         {
-            AddReward(-1);
+            AddReward(-0.6f);
+            looseVal++;
             EndEpisode();
         }
-        if (collision.gameObject.tag == "win")
+        if (collision.gameObject.tag == "prize")
+        {
+            AddReward(1);
+            winVal++;
+            EndEpisode();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "bonus")
+        {
+            AddReward(0.5f);
+            
+        }
+        if (other.gameObject.tag == "prize")
         {
             AddReward(1);
             EndEpisode();
         }
     }
-
     //help
- 
+
 }
