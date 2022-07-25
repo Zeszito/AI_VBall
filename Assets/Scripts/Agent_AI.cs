@@ -34,7 +34,11 @@ public class Agent_AI : Agent
          myInrot = this.transform.localRotation;
         myInPos = this.transform.localPosition ;
         forceh = force / 2;
-        force3x = force * 3;
+        if(force3x == 0)
+        {
+            force3x = force * 3;
+        }
+        
         wintxt.text = winVal.ToString();
         losetxt.text = looseVal.ToString();
 
