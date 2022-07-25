@@ -15,12 +15,18 @@ public class Agent_AI : Agent
     public GameObject obsParent;
     public Transform[] obs;
 
+    public Quaternion myInrot;
+    public Vector3 myInPos;
+
     //para eu mexer
     public void Start()
     {
       
          obs = obsParent.GetComponentsInChildren<Transform>();
-        print(obs);
+         myInrot = this.transform.rotation;
+        myInPos = this.transform.position;
+
+
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -53,7 +59,8 @@ public class Agent_AI : Agent
 
     public override void OnEpisodeBegin()
     {
-        base.OnEpisodeBegin();
+        this.transform.position = myInPos;
+        this.transform.rotation = myInrot;
     }
 
     public override void CollectObservations(VectorSensor sensor)
