@@ -23,6 +23,8 @@ public class Agent_not_fit : Agent
 
     public RandomMyChild RandomMyChild;
 
+    public ConstantForce c;
+
     //public Text wintxt;
     //int winVal = 0;
     //public Text losetxt;
@@ -39,13 +41,12 @@ public class Agent_not_fit : Agent
         RandomMyChild.RandDeact();
         if (forceh == 0)
         {
-            forceh = force / Random.Range(1, 3);
+            forceh = force / Random.Range(1f, 3f);
         }
    
-        if (force3x == 0)
-        {
-            force3x = force * Random.Range(1,5);
-        }
+   
+        force3x = force * Random.Range(5, 20);
+        c.force =new Vector3(Random.Range(-5, 20),0,0);
 
        // wintxt.text = winVal.ToString();
         //losetxt.text = looseVal.ToString();
@@ -88,13 +89,13 @@ public class Agent_not_fit : Agent
         RandomMyChild.RandDeact();
         
         
-            forceh = force / Random.Range(1, 3);
+            forceh = force / Random.Range(1f, 3f);
         
 
         
         
-            force3x = force * Random.Range(1, 5);
-        
+            force3x = force * Random.Range(5, 20);
+        c.force = new Vector3(Random.Range(-5, 20), 0, 0);
         // wintxt.text = winVal.ToString();
         //losetxt.text = looseVal.ToString();
     }

@@ -1087,6 +1087,7 @@ MonoBehaviour:
   myInrot: {x: 0, y: 0, z: 0, w: 0}
   myInPos: {x: 0, y: 0, z: 0}
   RandomMyChild: {fileID: 360583146233586131}
+  c: {fileID: 1681824944}
 --- !u!65 &658084519419374268
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1186,7 +1187,7 @@ GameObject:
   - component: {fileID: 658084519655363621}
   m_Layer: 0
   m_Name: Base (4)
-  m_TagString: wall
+  m_TagString: dead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
