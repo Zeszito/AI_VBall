@@ -1,0 +1,65 @@
+{
+    "myTrain_nofit": {
+        "checkpoints": [
+            {
+                "steps": 8499978,
+                "file_path": "results\\not_fit_Longer_caos\\myTrain_nofit\\myTrain_nofit-8499978.onnx",
+                "reward": 3.051680698114283,
+                "creation_time": 1658812313.1672442,
+                "auxillary_file_paths": [
+                    "results\\not_fit_Longer_caos\\myTrain_nofit\\myTrain_nofit-8499978.pt"
+                ]
+            },
+            {
+                "steps": 8999989,
+                "file_path": "results\\not_fit_Longer_caos\\myTrain_nofit\\myTrain_nofit-8999989.onnx",
+                "reward": 2.726573454750168,
+                "creation_time": 1658813068.9613655,
+                "auxillary_file_paths": [
+                    "results\\not_fit_Longer_caos\\myTrain_nofit\\myTrain_nofit-8999989.pt"
+                ]
+            },
+            {
+                "steps": 9499982,
+                "file_path": "results\\not_fit_Longer_caos\\myTrain_nofit\\myTrain_nofit-9499982.onnx",
+                "reward": 2.6947368603003654,
+                "creation_time": 1658813824.5044725,
+                "auxillary_file_paths": [
+                    "results\\not_fit_Longer_caos\\myTrain_nofit\\myTrain_nofit-9499982.pt"
+                ]
+            },
+            {
+                "steps": 9999973,
+                "file_path": "results\\not_fit_Longer_caos\\myTrain_nofit\\myTrain_nofit-9999973.onnx",
+                "reward": 3.0598101521594616,
+                "creation_time": 1658814577.0432293,
+                "auxillary_file_paths": [
+                    "results\\not_fit_Longer_caos\\myTrain_nofit\\myTrain_nofit-9999973.pt"
+                ]
+            },
+            {
+                "steps": 10000003,
+                "file_path": "results\\not_fit_Longer_caos\\myTrain_nofit\\myTrain_nofit-10000003.onnx",
+                "reward": 3.064353337799337,
+                "creation_time": 1658814577.1000772,
+                "auxillary_file_paths": [
+                    "results\\not_fit_Longer_caos\\myTrain_nofit\\myTrain_nofit-10000003.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 10000003,
+            "file_path": "results\\not_fit_Longer_caos\\myTrain_nofit.onnx",
+            "reward": 3.064353337799337,
+            "creation_time": 1658814577.1000772,
+            "auxillary_file_paths": [
+                "results\\not_fit_Longer_caos\\myTrain_nofit\\myTrain_nofit-10000003.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.9.1"
+    }
+}
