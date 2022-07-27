@@ -1025,6 +1025,10 @@ PrefabInstance:
       propertyPath: m_BehaviorType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 136032056261156798, guid: 9d30d13e82fab9f4b884a1b257b71e07, type: 3}
+      propertyPath: m_UseChildSensors
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6571136120550131104, guid: 9d30d13e82fab9f4b884a1b257b71e07, type: 3}
       propertyPath: wintxt
       value: 
