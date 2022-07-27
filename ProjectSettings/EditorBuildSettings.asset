@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Teste.unity
+    guid: 9e1f06e85a8f9cc4da3c30fa066de611
   m_configObjects:
     com.unity.ml-agents.settings: {fileID: 11400000, guid: c783ca45bdb1a0645a26144b4828b642, type: 2}
