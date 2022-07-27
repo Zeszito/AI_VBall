@@ -54,7 +54,7 @@ public class RandomMyChild : MonoBehaviour
     {
         foreach (Transform t in myChilds)
         {
-            t.gameObject.SetActive(true);
+            //t.gameObject.SetActive(true);
         }
 
         foreach (Transform t in myChilds)
@@ -62,7 +62,7 @@ public class RandomMyChild : MonoBehaviour
             int Rnd = Random.Range(1, 6);
             if(Rnd == 1 && t.gameObject.tag == "dead")
             {
-                t.gameObject.SetActive(false);
+               // t.gameObject.SetActive(false);
             }
             
         }
@@ -71,7 +71,7 @@ public class RandomMyChild : MonoBehaviour
             int Rnd = Random.Range(1, 6);
             if (Rnd == 1 && t.gameObject.tag == "bonus")
             {
-                t.gameObject.SetActive(false);
+               // t.gameObject.SetActive(false);
             }
 
         }

@@ -33,14 +33,18 @@ public class Agent_AI : Agent
          obs = obsParent.GetComponentsInChildren<Transform>();
          myInrot = this.transform.localRotation;
         myInPos = this.transform.localPosition ;
-        forceh = force / 2;
+
+        if (forceh == 0)
+        {
+            forceh = force / 2;
+        }
         if(force3x == 0)
         {
             force3x = force * 3;
         }
         
         wintxt.text = winVal.ToString();
-        losetxt.text = looseVal.ToString();
+       losetxt.text = looseVal.ToString();
 
     }
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -77,8 +81,8 @@ public class Agent_AI : Agent
         this.transform.localPosition  = myInPos;
         this.transform.localRotation = myInrot;
 
-        wintxt.text = winVal.ToString();
-        losetxt.text = looseVal.ToString();
+        wintxt.text = "W " +winVal.ToString();
+        losetxt.text = "L "+ looseVal.ToString();
     }
 
     public override void CollectObservations(VectorSensor sensor)

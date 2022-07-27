@@ -4,7 +4,7 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
-using static System.Net.Mime.MediaTypeNames;
+using UnityEngine.UI;
 
 public class Agent_not_fit : Agent
 {
@@ -25,10 +25,12 @@ public class Agent_not_fit : Agent
 
     public ConstantForce c;
 
-    //public Text wintxt;
-    //int winVal = 0;
-    //public Text losetxt;
-    //int looseVal = 1;
+    public Text wintxt;
+    int winVal = 0;
+    public Text losetxt;
+    int looseVal = 1;
+
+ 
 
     //para eu mexer
     public void Start()
@@ -41,15 +43,23 @@ public class Agent_not_fit : Agent
         RandomMyChild.RandDeact();
         if (forceh == 0)
         {
-            forceh = force / Random.Range(1f, 3f);
+         //   forceh = force / Random.Range(1f, 3f);
         }
-   
-   
-        force3x = force * Random.Range(5, 20);
-        c.force =new Vector3(Random.Range(-5, 20),0,0);
 
-       // wintxt.text = winVal.ToString();
-        //losetxt.text = looseVal.ToString();
+        if (forceh == 0)
+        {
+            forceh = force / 2;
+        }
+        if (force3x == 0)
+        {
+            force3x = force * 3;
+        }
+
+        //force3x = force * Random.Range(5, 20);
+       // c.force =new Vector3(Random.Range(-5, 20),0,0);
+
+        wintxt.text = winVal.ToString();
+        losetxt.text = looseVal.ToString();
 
     }
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -89,15 +99,15 @@ public class Agent_not_fit : Agent
         RandomMyChild.RandDeact();
         
         
-            forceh = force / Random.Range(1f, 3f);
+           // forceh = force / Random.Range(1f, 3f);
         
 
         
         
-            force3x = force * Random.Range(5, 20);
-        c.force = new Vector3(Random.Range(-5, 20), 0, 0);
-        // wintxt.text = winVal.ToString();
-        //losetxt.text = looseVal.ToString();
+           // force3x = force * Random.Range(5, 20);
+       // c.force = new Vector3(Random.Range(-5, 20), 0, 0);
+        wintxt.text = "W "+ winVal.ToString();
+        losetxt.text = "L" +looseVal.ToString();
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -151,13 +161,13 @@ public class Agent_not_fit : Agent
         if (collision.gameObject.tag == "dead")
         {
             AddReward(-0.6f);
-          //  looseVal++;
+            looseVal++;
             EndEpisode();
         }
         if (collision.gameObject.tag == "prize")
         {
             AddReward(1);
-           // winVal++;
+            winVal++;
             EndEpisode();
         }
     }
@@ -167,11 +177,13 @@ public class Agent_not_fit : Agent
         if (other.gameObject.tag == "bonus")
         {
             AddReward(0.5f);
+           // looseVal++;
 
         }
         if (other.gameObject.tag == "prize")
         {
             AddReward(1);
+            winVal++;
             EndEpisode();
         }
     }
